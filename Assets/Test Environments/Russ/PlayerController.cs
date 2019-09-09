@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     public bool canClick = false;
     public Button button;
 
+    //Attack
+    public GameObject sword;
     private void Awake()
     {
         playerTrans = transform;
@@ -101,8 +103,11 @@ public class PlayerController : MonoBehaviour
             {
                 button.clicked = true;
             }
-            
-            
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Attack();
         }
 
 
@@ -177,12 +182,6 @@ public class PlayerController : MonoBehaviour
         onCd = false;
     }
 
-
-    public void PushObject()
-    {
-        
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Moveable")
@@ -203,5 +202,10 @@ public class PlayerController : MonoBehaviour
             currentMoveable = null;
 
         }
+    }
+
+    public void Attack()
+    {
+        Instantiate(sword, this.transform.position, Quaternion.identity);
     }
 }
