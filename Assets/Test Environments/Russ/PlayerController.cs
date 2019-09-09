@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     
     //Clickables
     public bool canClick = false;
+    public Button button;
 
     private void Awake()
     {
@@ -82,6 +83,11 @@ public class PlayerController : MonoBehaviour
                 moveRb.constraints = move.rbCs;
                 move.player = gameObject;
                 move.linkedToPlayer = true;
+            }
+
+            if (canClick)
+            {
+                button.clicked = true;
             }
             
             
