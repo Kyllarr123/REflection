@@ -889,13 +889,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022355731}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.0020158198, y: 0.0014056516, z: -0.00020021528, w: 0.99999696}
   m_LocalPosition: {x: -2.17, y: 2, z: 0}
   m_LocalScale: {x: -27.452785, y: 1, z: 20.722527}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.231, y: 0.16100001, z: -0.023000002}
 --- !u!1 &2109112417
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +910,7 @@ GameObject:
   - component: {fileID: 2109112418}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1379,5 +1379,11 @@ PrefabInstance:
       propertyPath: rotateSpeed
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 7826771547765634437, guid: dcbdc8cb1ba11b54380f74bae2245e1d,
+        type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 3365322319683327761, guid: 96bab020e8a8a464eb49aa046d2209dc,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcbdc8cb1ba11b54380f74bae2245e1d, type: 3}
