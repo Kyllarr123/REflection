@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public bool onCd = false;
     int layerMask = 1 << 8;
     private Vector3 normGrav;
+    public float x;
+    public float rotateSpeed;
 
     //Camera
     public GameObject cam;
@@ -56,7 +58,17 @@ public class PlayerController : MonoBehaviour
 
     void Update () {
         
-        float x = Input.GetAxis ("Horizontal");
+        x = Input.GetAxis ("Horizontal");
+        float step = rotateSpeed * Time.deltaTime;
+        if (x > 0)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,0,0), step);
+        }
+
+        if (x < 0)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,180,0), step);
+        }
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             isGrounded = false;
