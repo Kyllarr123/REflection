@@ -36,8 +36,18 @@ public class Button : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>())
         {
             PlayerController controller = other.gameObject.GetComponent<PlayerController>();
-            controller.canClick = true;
-            controller.button = this;
+            if (this.gameObject.tag == "Button")
+            {
+                controller.canClick = true;
+                controller.button = this;  
+            }
+
+            if (this.gameObject.tag == "PressurePlate")
+            {
+                controller.canStomp = true;
+                controller.button = this;
+            }
+            
         }
     }
     private void OnTriggerExit(Collider other)

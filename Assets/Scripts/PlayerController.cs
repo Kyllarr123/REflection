@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public bool canClick = false;
     public Button button;
     public bool cantMove = false;
+    public bool canStomp;
 
     //Attack
     public GameObject sword;
@@ -155,7 +156,15 @@ public class PlayerController : MonoBehaviour
                         {
                             cantMove = true;
                             anim.SetTrigger("PushButton");
-                            button.clicked = true;
+                            //button.clicked = true;
+                            StartCoroutine(Wait());
+                        }
+
+                        if (canStomp)
+                        {
+                            cantMove = true;
+                            anim.SetTrigger("StompButton");
+                            //button.clicked = true;
                             StartCoroutine(Wait());
                         }
                     }
@@ -274,5 +283,6 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         cantMove = false;
+        anim.SetTrigger("AnimDone");
     }
 }
