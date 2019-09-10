@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,7 +25,11 @@ public class CameraBehaviour : MonoBehaviour
         //    transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
         //}
     }
-        
+
+    private void Awake()
+    {
+        target = FindObjectOfType<PlayerController>().gameObject.transform;
+    }
 
     void FixedUpdate()
     {

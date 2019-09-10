@@ -22,10 +22,18 @@ public class PlayerController : MonoBehaviour
     private Vector3 normGrav;
     public float x;
     public float rotateSpeed;
+    public int runX;
+    
+    //Animator
+    public Animator anim;
 
+    public GameObject model;
     //Camera
     public GameObject cam;
     private CameraBehaviour camB;
+    
+    //Flip
+    public bool flipped = false;
     
     //Moveable Ability
     private GameObject currentMoveable;
@@ -39,7 +47,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerTrans = transform;
+        cam = FindObjectOfType<Camera>().gameObject;
         camB = cam.GetComponent<CameraBehaviour>();
+
     }
 
     void Start () {
@@ -51,6 +61,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionStay()
     {
         isGrounded = true;
+        anim.SetBool("Grounded", true);
     }
 
     private void OnCollisionExit(Collision other)
@@ -61,22 +72,42 @@ public class PlayerController : MonoBehaviour
     void Update () {
         
         x = Input.GetAxis ("Horizontal");
+        
+        if (x != 0 && isGrounded)
+        {
+            anim.SetBool("Run", true);
+        }
+
+        if (x == 0 && isGrounded)
+        {
+            anim.SetBool("Run", false);
+        }
         float step = rotateSpeed * Time.deltaTime;
         if (x > 0)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,0,0), step);
+            transform.rotation = Quaternion.Euler( 0,180,0);
+            model.transform.localRotation = Quaternion.Euler(0f, -90f,0f );
+            if (abilityActive)
+            {
+                //model.transform.localRotation = Quaternion.Euler(0f, -90f,-180f );
+            }
         }
 
         if (x < 0)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,180,0), step);
+            transform.rotation = Quaternion.Euler( 0,-180,0);
+            model.transform.localRotation = Quaternion.Euler(0f, 90f,0f );
         }
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             isGrounded = false;
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-            
+            anim.SetBool("Jumping", true);
+            anim.SetBool("Grounded", false);
         }
+        model.transform.localPosition = new Vector3(0f,-1,0f);
+        
+        
 
 
 
@@ -85,6 +116,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Flip();
+            
+            //gameObject.transform.localRotation = Quaternion.Euler(0, 90 ,-180);
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -97,6 +130,7 @@ public class PlayerController : MonoBehaviour
                 moveRb.constraints = move.rbCs;
                 move.player = gameObject;
                 move.linkedToPlayer = true;
+                anim.SetBool("Pushing", true);
             }
 
             if (canClick)
@@ -139,6 +173,7 @@ public class PlayerController : MonoBehaviour
                 jump = -jump;
                 onCd = true;
                 abilityActive = true;
+                
                 StartCoroutine(CD(coolDown));
 
                 Debug.Log("on Reflecter"); 
@@ -189,6 +224,7 @@ public class PlayerController : MonoBehaviour
 
             currentMoveable = other.gameObject;
             
+            
         }
     }
 
@@ -200,12 +236,13 @@ public class PlayerController : MonoBehaviour
             move.player = null;
             move.linkedToPlayer = false;
             currentMoveable = null;
+            anim.SetBool("Pushing", false);
 
         }
     }
 
     public void Attack()
     {
-        Instantiate(sword, this.transform.position, Quaternion.identity);
+        //Instantiate(sword, this.transform.position, Quaternion.identity);
     }
 }
