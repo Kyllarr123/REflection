@@ -37,7 +37,7 @@ public class MoveableObject : MonoBehaviour
             rb.velocity = player.GetComponent<Rigidbody>().velocity * 2f;
             Vector3 linkPos = linkedObj.transform.position;
             linkPos.x = gameObject.transform.position.x + diviation;
-            linkPos.y = -gameObject.transform.position.y;
+            //linkPos.y = -gameObject.transform.position.y;
             linkedObj.transform.position = linkPos;
         }
 
