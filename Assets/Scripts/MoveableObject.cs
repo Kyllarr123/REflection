@@ -10,6 +10,7 @@ public class MoveableObject : MonoBehaviour
     private Rigidbody rb;
     public GameObject player;
     public bool linkedToPlayer;
+    public float diviation;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,7 @@ public class MoveableObject : MonoBehaviour
             rb.mass = 0.1f;
             rb.velocity = player.GetComponent<Rigidbody>().velocity * 2f;
             Vector3 linkPos = linkedObj.transform.position;
-            linkPos.x = gameObject.transform.position.x;
+            linkPos.x = gameObject.transform.position.x + diviation;
             linkPos.y = -gameObject.transform.position.y;
             linkedObj.transform.position = linkPos;
         }
