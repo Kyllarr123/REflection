@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(this.gameObject.transform.position, Vector3.down * 10f, out hit,10f, layerMask))
             {
-                camB.offset.y = -4;
+                camB.offset.y = -2;
                 Renderer rend = hit.collider.GetComponent<Renderer>();
                 flipObjectSize = rend.bounds.size;
                 moveDist = flipObjectSize.y * 2;
@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(this.gameObject.transform.position, Vector3.up * 10f, out hit, 10f,layerMask))
             {
-                camB.offset.y = 4;
+                camB.offset.y = 2;
                 Renderer rend = hit.collider.GetComponent<Renderer>();
                 flipObjectSize = rend.bounds.size;
                 moveDist = flipObjectSize.y * 2;

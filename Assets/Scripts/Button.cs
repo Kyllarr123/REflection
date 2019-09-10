@@ -10,7 +10,11 @@ public class Button : MonoBehaviour
 
     public GameObject thisDoor;
 
-    public GameObject linkedDoor;
+    public GameObject linkedDoor;    
+    
+    public GameObject thisDoor1;
+
+    public GameObject linkedDoor1;
 
     public bool clicked = false;
     
@@ -28,6 +32,11 @@ public class Button : MonoBehaviour
         {
             Destroy(thisDoor);
             Destroy(linkedDoor);
+            if (thisDoor1 != null && linkedDoor1 != null)
+            {
+                Destroy(thisDoor1);
+                Destroy(linkedDoor1);
+            }
         }
     }
 
@@ -56,6 +65,7 @@ public class Button : MonoBehaviour
         {
             PlayerController controller = other.gameObject.GetComponent<PlayerController>();
             controller.canClick = false;
+            controller.canStomp = false;
         }
     }
 }
