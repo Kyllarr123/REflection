@@ -14,4 +14,19 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Credits");
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void GoToCredits2()
+    {
+        SceneManager.LoadScene("Credits2");
+    }
 }
