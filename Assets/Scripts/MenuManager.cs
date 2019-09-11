@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
 
     public void GoToGame()
     {
-        SceneManager.LoadScene("GameSpace");
+        SceneManager.LoadScene("Level1");
     }
 
     public void GoToCredits()
