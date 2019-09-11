@@ -21,4 +21,9 @@ public class RetryButton : MonoBehaviour
     {
         menu.RetryScene();
     }
+
+    public void MainMenu()
+    {
+        
+    }
 }
