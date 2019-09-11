@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
 
     public void GoToGame()
     {
-       SceneManager.LoadScene("GameSpace"); 
+        SceneManager.LoadScene("GameSpace");
     }
 
     public void GoToCredits()
@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
-<<<<<<< HEAD
+
     public void Exit()
     {
         Application.Quit();
@@ -39,7 +39,7 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Credits2");
     }
-=======
+
     public void GameOverScene()
     {
         retryScene = SceneManager.GetActiveScene();
@@ -66,9 +66,9 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
-    
-    
-    
-    
->>>>>>> master
+
+
+
+
+
 }
