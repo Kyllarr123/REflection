@@ -10,7 +10,7 @@ public class EndGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        menu = FindObjectOfType<MenuManager>();
     }
 
     // Update is called once per frame
@@ -21,14 +21,18 @@ public class EndGame : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (SceneManager.GetActiveScene().name == "Level1")
+        if (other.GetComponent<PlayerController>())
         {
-            menu.Level1();
+            if (SceneManager.GetActiveScene().name == "Level1")
+            {
+                menu.Level1();
+            }
+
+            if (SceneManager.GetActiveScene().name == "Level2")
+            {
+                menu.Level2();
+            }
         }
 
-        if (SceneManager.GetActiveScene().name == "Level2")
-        {
-            menu.Level2();
-        }
     }
 }

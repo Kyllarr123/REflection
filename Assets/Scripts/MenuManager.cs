@@ -54,12 +54,12 @@ public class MenuManager : MonoBehaviour
 
     public void Level2()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene(4);
     }
 
     public void Level1()
     {
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene(2);
     }
 
     public void MainMenu()
