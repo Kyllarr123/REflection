@@ -25,6 +25,8 @@ public class EnemyPatrol : MonoBehaviour
     public float lookDistance;
     public delegate void FoundYou();
     public static event FoundYou GetRekt;
+
+    public GameObject sprite;
     private void Awake()
     {
         
@@ -82,7 +84,7 @@ public class EnemyPatrol : MonoBehaviour
             if (hit.collider.GetComponent<PlayerController>())
             {
                 Debug.Log("fuck you player");
-                //GetRekt();
+                StartCoroutine(YouThere());
             }
         }
     }
@@ -99,6 +101,16 @@ public class EnemyPatrol : MonoBehaviour
         yield return new WaitForSeconds(5f);
         isStopped = false;
         //GotoNextPoint();
+    }
+
+    IEnumerator YouThere()
+    {
+        sprite.SetActive(true);
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        isStopped = true;
+        anim.SetBool("Stopped", true);
+        yield return new WaitForSeconds(2);
+        GetRekt();
     }
 }
 
