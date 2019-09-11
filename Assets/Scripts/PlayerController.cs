@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public bool flipped = false;
     
     //Moveable Ability
-    private GameObject currentMoveable;
+    public GameObject currentMoveable;
     
     //Clickables
     public bool canClick = false;
@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
                         {
                             cantMove = true;
                             anim.SetTrigger("PushButton");
-                            //button.clicked = true;
+                            button.clicked = true;
                             StartCoroutine(Wait());
                         }
 
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
                         {
                             cantMove = true;
                             anim.SetTrigger("StompButton");
-                            //button.clicked = true;
+                            button.clicked = true;
                             StartCoroutine(Wait());
                         }
                     }
@@ -196,7 +196,12 @@ public class PlayerController : MonoBehaviour
                 camB.offset.y = -2;
                 Renderer rend = hit.collider.GetComponent<Renderer>();
                 flipObjectSize = rend.bounds.size;
-                moveDist = flipObjectSize.y * 2;
+                if (flipObjectSize.y > 2)
+                {
+                    moveDist = flipObjectSize.y;
+                }
+                else moveDist = flipObjectSize.y * 2;
+                
                 Vector3 currentPos = transform.position;
                 currentPos.y = currentPos.y - moveDist;
                     
@@ -223,7 +228,11 @@ public class PlayerController : MonoBehaviour
                 camB.offset.y = 2;
                 Renderer rend = hit.collider.GetComponent<Renderer>();
                 flipObjectSize = rend.bounds.size;
-                moveDist = flipObjectSize.y * 2;
+                if (flipObjectSize.y > 2)
+                {
+                    moveDist = flipObjectSize.y;
+                }
+                else moveDist = flipObjectSize.y * 2;
                 Vector3 currentPos = transform.position;
                 currentPos.y = currentPos.y + moveDist;
                     

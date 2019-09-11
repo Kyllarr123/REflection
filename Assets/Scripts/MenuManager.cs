@@ -35,6 +35,16 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(retryScene.name);
     }
+
+    public void Level2()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void Level1()
+    {
+        SceneManager.LoadScene("Level2");
+    }
     
     
     
